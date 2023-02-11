@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button/Button";
 
@@ -11,18 +11,26 @@ const Login = ({ onLogin }) => {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isFormValid, setIsFormValid] = useState(false);
 
+  useEffect(() => {
+    const indetifier = setTimeout(() => {
+      setIsFormValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+    }, 500);
+
+    const cleanUp = () => {
+      clearTimeout(indetifier);
+    };
+
+    return cleanUp;
+  }, [enteredEmail, enteredPassword]);
+
   const emailChangeHandler = (e) => {
     setEnteredEmail(e.target.value);
-
-    setIsFormValid(
-      e.target.value.includes("@") && enteredPassword.trim().length > 6
-    );
   };
 
   const passwordChangeHandler = (e) => {
     setEnteredPassword(e.target.value);
-
-    setIsFormValid(e.target.value.trim().length > 6 && enteredEmail.includes("@"));
   };
 
   const validateEmailHandler = () => {
