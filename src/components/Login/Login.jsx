@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useContext } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button/Button";
 
 import classes from "./Login.module.css";
+import AuthContext from "../../store/auth-context";
 
 const initialState = () => {
   return {
@@ -31,7 +32,9 @@ const passwordReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
-const Login = ({ onLogin }) => {
+const Login = () => {
+  const { onLogin } = useContext(AuthContext);
+
   const [emailState, dispatchEmail] = useReducer(emailReducer, initialState());
   const [passwordState, dispatchPassword] = useReducer(
     passwordReducer,
