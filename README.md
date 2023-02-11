@@ -14,5 +14,6 @@ Create starter folder using vite and react for front-end
 - Dumb componets and StateFull components
 - LocalStorage
 - Simple validation
-- React hooks (useEffect, useReducer)
+- React hooks (useEffect, useReducer, useContext)
+- Custom useContext component
 
