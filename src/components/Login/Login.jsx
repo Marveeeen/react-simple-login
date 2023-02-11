@@ -22,7 +22,7 @@ const Login = ({ onLogin }) => {
   const passwordChangeHandler = (e) => {
     setEnteredPassword(e.target.value);
 
-    setIsFormValid(e.target.value.trim() > 6 && enteredEmail.includes("@"));
+    setIsFormValid(e.target.value.trim().length > 6 && enteredEmail.includes("@"));
   };
 
   const validateEmailHandler = () => {
